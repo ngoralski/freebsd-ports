@@ -5,20 +5,18 @@ PORTNAME=	librenms-agent
 PORTVERSION=	0.1
 #PORTREVISION=	1
 CATEGORIES=	net-mgmt
-MASTER_SITES=	http://git.mathias-kettner.de/git/?p=check_mk.git;a=blob_plain;f=agents/check_mk_agent.freebsd;hb=refs/heads/1.2.8
 
 MAINTAINER=	nicolas@goralski.fr
-COMMENT=	librenms agents for monitoring system
+COMMENT=	librenms agents and plugins for freebsd system
 
+NO_ARCH=	yes
 LICENSE=	GPLv3
 
 USE_GITHUB=	yes
-GH_ACCOUNT=	librenms
-GH_PROJECT= librenms-agent
-GH_TAGNAME=	21817b6b36692bdca8fac8f3ee4a0258a2d2bcee
+GH_ACCOUNT=	ngoralski
+GH_PROJECT= librenms-agent-freebsd
+GH_TAGNAME=	7d716c9429e3463068c44af8e0bb2293ed6f3402
 
-USES=		shebangfix
-SHEBANG_FILES=	check_mk_agent
 
 NO_BUILD=	yes
 
@@ -27,6 +25,16 @@ RUN_DEPENDS+=	xinetd:security/xinetd \
 
 LIB_DEPENDS+=	libstatgrab.so:devel/libstatgrab \
 
-# http://git.mathias-kettner.de/git/?p=check_mk.git;a=blob_plain;f=agents/check_mk_agent.freebsd;hb=refs/heads/1.2.8
+
+do-install:
+	cd ${STAGEDIR} ; \
+	${MKDIR} usr/local/etc/xinet.d/ usr/local/libexec/check_mk_agent/plugins usr/local/libexec/check_mk_agent/repo usr/local/libexec/check_mk_agent/local ; \
+	cd ${WRKSRC} ; \
+	cp check_mk_agent ${STAGEDIR}/usr/local/bin ; \
+	cp check_mk_xinetd ${STAGEDIR}/usr/local/etc/xinet.d/check_mk ; \
+	cp snmp/distro ${STAGEDIR}/usr/local/bin ; \
+	for agent_local in $$( ${FIND} ./agent-local -type f ! -name README ); do \
+		cp "$$agent_local" ${STAGEDIR}/usr/local/libexec/check_mk_agent/repo ; \
+	done
 
 .include <bsd.port.mk>

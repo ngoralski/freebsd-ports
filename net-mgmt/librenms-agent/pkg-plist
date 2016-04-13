@@ -1,0 +1,16 @@
+bin/check_mk_agent
+bin/distro
+etc/xinet.d/check_mk
+libexec/check_mk_agent/repo/apache
+libexec/check_mk_agent/repo/bind
+libexec/check_mk_agent/repo/ceph
+libexec/check_mk_agent/repo/dmi
+libexec/check_mk_agent/repo/memcached
+libexec/check_mk_agent/repo/munin
+libexec/check_mk_agent/repo/mysql
+libexec/check_mk_agent/repo/nginx
+libexec/check_mk_agent/repo/powerdns
+libexec/check_mk_agent/repo/temperature
+libexec/check_mk_agent/repo/tinydns
+@dir libexec/check_mk_agent/local
+@dir libexec/check_mk_agent/plugins
