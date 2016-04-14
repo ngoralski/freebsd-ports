@@ -1,5 +1,6 @@
 bin/check_mk_agent
 bin/distro
+bin/mk_enplug
 etc/xinet.d/check_mk
 libexec/check_mk_agent/repo/apache
 libexec/check_mk_agent/repo/bind
