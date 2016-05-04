@@ -2,8 +2,7 @@
 # $FreeBSD: $
 
 PORTNAME=	librenms-agent
-PORTVERSION=	0.2
-#PORTREVISION=	1
+PORTVERSION=	0.3
 CATEGORIES=	net-mgmt
 
 MAINTAINER=	nicolas@goralski.fr
@@ -14,8 +13,8 @@ LICENSE=	GPLv3
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	ngoralski
-GH_PROJECT= librenms-agent-freebsd
-GH_TAGNAME=	16b74b11e186b3fa4c679582aceb98b036ddacc1
+GH_PROJECT=	librenms-agent-freebsd
+GH_TAGNAME=	e57fedf
 
 
 NO_BUILD=	yes
